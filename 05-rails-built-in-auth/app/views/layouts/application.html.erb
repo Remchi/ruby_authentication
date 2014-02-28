@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RailsBuiltInAuth</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg %>
+  <% end %>
+
+  <% if current_user %>
+    Welcome, <%= current_user.username %>
+    <%= link_to "Logout", logout_path %>
+  <% else %>
+    <%= link_to "Login", login_path %>
+  <% end %>
+
+<%= yield %>
+
+</body>
+</html>
